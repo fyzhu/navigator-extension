@@ -1,26 +1,23 @@
 {
   "name": "navigator",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "manifest_version": 3,
   "description": "generate articale navigator automatically",
   "permissions": [
     "storage",
     "tabs",
-    "http://*/",
-    "https://*/",
     "notifications", 
-		"webRequest",
-    "webRequestBlocking"
+		"webRequest"
   ],
-  "browser_action": {
-    "default_popup": "popup.html"
-  },
+  // "browser_action": {
+    // "default_popup": "popup.html"
+  // },
   "icons": {
     // "16": "images/16_gray.png",
     // "32": "images/32_gray.png",
     // "48": "images/48.png",
     // "128": "images/128.png"
   },
-  "manifest_version": 3,
   "content_scripts": [
     {
       "matches": ["https://juejin.cn/book/*"],
