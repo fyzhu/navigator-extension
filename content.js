@@ -9,7 +9,7 @@ document.onreadystatechange = () => {
       })
       const ol = document.createElement("ol");
       const str = Array.from(h2)
-        .map((item, index) => `<li><a href="#${'heading-' + (index + 1)}">${(index + 1) + '. ' + item.textContent}</a></li>`)
+        .map((item, index) => `<li><a href="#${item.getAttribute('data-id')}">${(index + 1) + '. ' + item.textContent}</a></li>`)
         .join("");
       ol.innerHTML = str;
       const style = document.createElement('style')
@@ -26,7 +26,7 @@ document.onreadystatechange = () => {
       ol.style.top = '60px'
       ol.style.padding = '20px'
       ol.style.fontSize = '15px'
-      ol.style.boxShadow = '1px 1px 8px rgb(0 0 0 / 15%);'
+      ol.style.boxShadow = '1px 1px 8px rgb(0 0 0 / 15%)'
     }, 2000);
     
   }
