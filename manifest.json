@@ -1,7 +1,7 @@
 {
   "name": "navigator",
   "version": "0.0.2",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "description": "generate articale navigator automatically",
   "permissions": [
     "storage",
@@ -28,6 +28,11 @@
     }
   ],
   "web_accessible_resources": [
-	  "js/inject.js"
+    {
+      "resources": [ "js/inject.js" ],
+      "matches": ["https://juejin.cn/*","https://es6.ruanyifeng.com/*"]
+      // "use_dynamic_url": true
+    }
+	  
   ]
 }
