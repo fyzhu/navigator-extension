@@ -1,13 +1,14 @@
 {
   "name": "navigator",
-  "version": "0.0.1",
-  "manifest_version": 3,
+  "version": "0.0.2",
+  "manifest_version": 2,
   "description": "generate articale navigator automatically",
   "permissions": [
     "storage",
     "tabs",
     "notifications", 
-		"webRequest"
+		"webRequest",
+    "history"
   ],
   // "browser_action": {
     // "default_popup": "popup.html"
@@ -21,12 +22,12 @@
   "content_scripts": [
     {
       "matches": ["https://juejin.cn/book/*","https://es6.ruanyifeng.com/*"],
-      "js": ["./content.js"],
+      "js": ["js/content.js"],
       "run_at": "document_start",
       "all_frames": true
     }
   ],
   "web_accessible_resources": [
-    
+	  "js/inject.js"
   ]
 }
