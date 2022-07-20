@@ -73,7 +73,44 @@ function processNavigator() {
       ol.style.paddingLeft = "40px";
       ol.style.fontSize = "15px";
       ol.style.boxShadow = "1px 1px 8px rgb(0 0 0 / 15%)";
-    } else {
+    } else if(location.host == "juejin.cn" && location.pathname.includes('book')) {
+      const h1 = document.querySelector("h1");
+      const h2 = document.querySelectorAll("h2");
+      Array.from(h2).forEach((item, index) => {
+        // item.setAttribute('id', 'heading-' + index)
+      });
+      
+      if (!document.querySelector("#navigator")) {
+        ol = document.createElement("ol");
+        ol.id = "navigator";
+      }
+      const str = Array.from(h2)
+        .map(
+          (item, index) =>
+            `<li><a href="#${item.getAttribute("data-id")}">${
+              index + 1 + ". " + item.textContent
+            }</a></li>`
+        )
+        .join("");
+      ol.innerHTML = str;
+      const style = document.createElement("style");
+      style.innerHTML = `
+        ol li {
+          margin: 10px 0;
+        }
+      `;
+      if (!document.querySelector("#navigator")) {
+        document.body.appendChild(ol);
+        document.body.appendChild(style);
+        ol.style.background = "#fff";
+        ol.style.position = "fixed";
+        ol.style.right = "15px";
+        ol.style.top = "60px";
+        ol.style.padding = "20px";
+        ol.style.fontSize = "15px";
+        ol.style.boxShadow = "1px 1px 8px rgb(0 0 0 / 15%)";
+      }
+    } else if (location.host == 'time.geekbang.org') {
       const h1 = document.querySelector("h1");
       const h2 = document.querySelectorAll("h2");
       Array.from(h2).forEach((item, index) => {

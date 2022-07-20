@@ -21,7 +21,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://juejin.cn/book/*","https://es6.ruanyifeng.com/*"],
+      "matches": ["https://juejin.cn/book/*","https://es6.ruanyifeng.com/*", "https://time.geekbang.org/*"],
       "js": ["js/content.js"],
       "run_at": "document_start",
       "all_frames": true
@@ -30,7 +30,7 @@
   "web_accessible_resources": [
     {
       "resources": [ "js/inject.js" ],
-      "matches": ["https://juejin.cn/*","https://es6.ruanyifeng.com/*"]
+      "matches": ["https://juejin.cn/*","https://es6.ruanyifeng.com/*", "https://time.geekbang.org/*"]
       // "use_dynamic_url": true
     }
 	  
