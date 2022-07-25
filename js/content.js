@@ -37,7 +37,7 @@ window.addEventListener("pushState", function (e) {
   // console.log("THEY DID IT AGAIN! pushState");
   processNavigator();
 });
-let ol
+let ol;
 function processNavigator() {
   setTimeout(() => {
     if (location.host == "es6.ruanyifeng.com") {
@@ -73,23 +73,35 @@ function processNavigator() {
       ol.style.paddingLeft = "40px";
       ol.style.fontSize = "15px";
       ol.style.boxShadow = "1px 1px 8px rgb(0 0 0 / 15%)";
-    } else if(location.host == "juejin.cn" && location.pathname.includes('book')) {
-      const h1 = document.querySelector("h1");
-      const h2 = document.querySelectorAll("h2");
+    } else if (
+      location.host == "juejin.cn" &&
+      location.pathname.includes("book")
+    ) {
+      const h2 = document.querySelectorAll("h2, h3");
       Array.from(h2).forEach((item, index) => {
         // item.setAttribute('id', 'heading-' + index)
       });
-      
+
       if (!document.querySelector("#navigator")) {
         ol = document.createElement("ol");
         ol.id = "navigator";
       }
+      let index = 0
       const str = Array.from(h2)
         .map(
-          (item, index) =>
-            `<li><a href="#${item.getAttribute("data-id")}">${
-              index + 1 + ". " + item.textContent
-            }</a></li>`
+          (item) => {
+            item.tagName == "H2" ? index++ : index
+            return `<li>
+            <a href="#${item.getAttribute("data-id")}">
+            ${
+              item.tagName == "H2"
+                ? index + ". " + item.textContent
+                : '- ' + item.textContent
+            }
+            </a>
+          </li>`
+          }
+            
         )
         .join("");
       ol.innerHTML = str;
@@ -110,13 +122,13 @@ function processNavigator() {
         ol.style.fontSize = "15px";
         ol.style.boxShadow = "1px 1px 8px rgb(0 0 0 / 15%)";
       }
-    } else if (location.host == 'time.geekbang.org') {
+    } else if (location.host == "time.geekbang.org") {
       const h1 = document.querySelector("h1");
       const h2 = document.querySelectorAll("h2");
       Array.from(h2).forEach((item, index) => {
         // item.setAttribute('id', 'heading-' + index)
       });
-      
+
       if (!document.querySelector("#navigator")) {
         ol = document.createElement("ol");
         ol.id = "navigator";
